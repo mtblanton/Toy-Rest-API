@@ -1,7 +1,6 @@
 package com.example;
 
 import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 /**
@@ -37,23 +36,5 @@ public class MongoDBInstance {
             db = client.getDatabase(dbName);
         }
         return db;
-    }
-
-    public MongoCollection getCollection(String collection) {
-        if(client == null) {
-            try {
-                client = new MongoClient(dbHost);
-            } catch(Exception e) {
-                return null;
-            }
-        }
-        if(db == null) {
-            try {
-                db = client.getDatabase(dbName);
-            } catch(Exception e) {
-                return null;
-            }
-        }
-        return db.getCollection(collection);
     }
 }
